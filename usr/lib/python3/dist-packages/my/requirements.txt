@@ -1,0 +1,6 @@
+cryptography
+pyyaml
+rich
+ssh_config
+typer
+
