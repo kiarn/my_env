@@ -1,3 +1,4 @@
+import os
 import typer
 import glob
 from rich.console import Console
@@ -18,7 +19,8 @@ def ls():
     ssh_keys.add_column("Type", style="yellow")
     ssh_keys.add_column("Length", style="green")
 
-    for key_path in glob.glob('/home/arnaud/.ssh/**/*.pub', recursive=True):
+    pattern = os.path.expanduser("~/.ssh/") + '**/*.pub'
+    for key_path in glob.glob(pattern, recursive=True):
         with open(key_path, 'rb') as f:
             key_content = f.read()
 
