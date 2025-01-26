@@ -7,7 +7,7 @@ import logging.handlers
 from termcolor import colored
 
 from rich.console import Console
-from typers import alias
+from typers import alias, ssh
 
 
 class CLILogHandler(logging.StreamHandler):
@@ -40,6 +40,7 @@ log.handlers = [stdout]
 console = Console()
 app = typer.Typer(no_args_is_help=True, add_completion=False, context_settings={"help_option_names": ["-h", "--help"]},)
 app.add_typer(alias.app, name='alias')
+app.add_typer(ssh.app, name='ssh')
 
 if __name__ == "__main__":
     app()
