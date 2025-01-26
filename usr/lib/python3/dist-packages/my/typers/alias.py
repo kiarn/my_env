@@ -3,6 +3,7 @@ import typer
 import subprocess
 from rich.console import Console
 from rich.table import Table
+from typing_extensions import Annotated
 
 
 console = Console(emoji=False)
@@ -12,7 +13,9 @@ app = typer.Typer()
     invoke_without_command=True,
     help="""Check unnecessary directories in attic."""
 )
-def ls():
+def ls(filter_str: Annotated[str, typer.Argument()] = ''):
+
+    filter_str = filter_str.lower()
 
     env = os.environ.copy()
     e = subprocess.Popen('$SHELL -c -i alias', shell=True, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, env=env)
@@ -23,9 +26,10 @@ def ls():
     aliases.add_column("Definition", style="cyan")
 
     for cmd in output.decode().split('\n'):
-        cmd = cmd.strip()
-        if cmd:
-            alias, alias_cmd = cmd.split('=', 1)
-            aliases.add_row(alias, alias_cmd.strip("'"))
+        if filter_str in cmd.lower():
+            cmd = cmd.strip()
+            if cmd:
+                alias, alias_cmd = cmd.split('=', 1)
+                aliases.add_row(alias, alias_cmd.strip("'"))
 
     console.print(aliases)
