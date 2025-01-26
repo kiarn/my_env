@@ -11,7 +11,7 @@ app = typer.Typer()
 
 @app.callback(
     invoke_without_command=True,
-    help="""Check unnecessary directories in attic."""
+    help="""List all aliases. Use optional argument FILTER to filter them."""
 )
 def ls(filter_str: Annotated[str, typer.Argument()] = ''):
 
