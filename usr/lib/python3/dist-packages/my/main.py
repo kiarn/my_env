@@ -7,7 +7,7 @@ import logging.handlers
 from termcolor import colored
 
 from rich.console import Console
-from typers import alias, ssh, ssh_keys
+from typers import alias, ssh, ssh_keys, totp
 
 
 class CLILogHandler(logging.StreamHandler):
@@ -42,6 +42,7 @@ app = typer.Typer(no_args_is_help=True, add_completion=False, context_settings={
 app.add_typer(alias.app, name='alias')
 app.add_typer(ssh.app, name='ssh')
 app.add_typer(ssh_keys.app, name='ssh_keys')
+app.add_typer(totp.app, name='totp')
 
 if __name__ == "__main__":
     app()
