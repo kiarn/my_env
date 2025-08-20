@@ -7,7 +7,7 @@ import logging.handlers
 from termcolor import colored
 
 from rich.console import Console
-from typers import alias, ssh, ssh_keys, totp
+from .typers import alias, ssh, ssh_keys, totp
 
 
 class CLILogHandler(logging.StreamHandler):

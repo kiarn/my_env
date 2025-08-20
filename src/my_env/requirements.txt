@@ -1,6 +1,6 @@
 cryptography
+pyotp
 pyyaml
-rich
 ssh_config
 typer
 
