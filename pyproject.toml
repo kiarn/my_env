@@ -3,7 +3,7 @@ requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "my_env"
+name = "my_userparam"
 version = "0.1"
 authors = [
   { name="Arnaud Kientz", email="arnaud@linuxmuster.net" },
@@ -26,7 +26,7 @@ dependencies = [
 ]
 
 [project.scripts]
-my = "my_env.main:app"
+my = "my_userparam.main:app"
 
 [project.urls]
 Homepage = "https://github.com/kiarn/my"
